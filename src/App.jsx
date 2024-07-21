@@ -16,7 +16,6 @@ function App() {
             <Route path="/menclothes" element={<MenClothes/>}/>
             <Route path="/login" element={<LogIn/>}/>
             <Route path="/womenclothes" element={<WomenCloth/>}/>
-
         </Routes>
     </>
   )

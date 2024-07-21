@@ -14,7 +14,7 @@ export default function Header(){
     return (
         <>
             
-            <nav className="bg-indigo-900 shadow"> 
+            <nav className="bg-gradient-to-tr from-violet-500 to-pink-500 shadow"> 
                 <div className="h-10vh flex justify-between z-50 text-white lg:py-5 px-20 py-4 flex-1"  >
                     <div className="flex items-center felx-1">
                         <span className="text-3x1 font-bold"> Trift Shop</span>
