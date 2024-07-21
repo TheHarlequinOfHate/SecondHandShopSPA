@@ -1,7 +1,7 @@
 import {  Route, Routes } from "react-router-dom"
 import Header from "./components/header/Header"
 import Home from "./components/homePage/HomePage"
-import MenClothes from "./components/mensPage/MenClothes"
+import MenClothes from "./components/mensclothes/MenClothes"
 import LogIn from "./components/login/LogIn"
 import WomenCloth from "./components/women/Women"
 
