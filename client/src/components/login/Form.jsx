@@ -1,4 +1,13 @@
+import useForm from "../../hooks/useForm";
+
+
 export default function Form() {
+  const {values, onChangeHandler , onLoginClick} = useForm(loginHandler,{
+    email: '',
+    password: ''
+  });
+
+  console.log(values)
   return (
     <>
       <div className="bg-white px-10 py-20 rounded-3xl border-2 border-gray-200 ">
@@ -7,29 +16,33 @@ export default function Form() {
           Welcome back! Please enter your details.
         </p>
         <div className="mt-8">
-          <form >
+          <form id="login">
             <div>
-              <label htmlFor="Email" className="text-lg font-medium">
+              <label htmlFor="email" className="text-lg font-medium">
                 Email
               </label>
               <input
                 placeholder="Enter your email"
-                type="text"
+                type="email"
                 name="email"
                 id="email"
                 className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+                onChange={onChangeHandler}
+                value={values.email}
               ></input>
             </div>
             <div>
-              <label htmlFor="Password" className="text-lg font-medium">
+              <label htmlFor="password" className="text-lg font-medium">
                 Password
               </label>
               <input
                 placeholder="Enter your password"
                 type="password"
-                name="passwoed"
+                name="password"
                 id="password"
                 className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+                onChange={onChangeHandler}
+                value={values.password}
               ></input>
             </div>
           </form>
@@ -45,7 +58,11 @@ export default function Form() {
                 </button>
           </div>
           <div className="mt-8 flex flex-col gap-y-4">
-                <button className="active:scale-[.98] active:duration-75 hover:scale-[1.01] easy-in-out transition-all py-3 rounded-xl bg-violet-500 text-white text-lg font-bold">Sign In</button>
+                <button className="active:scale-[.98] active:duration-75 hover:scale-[1.01] easy-in-out transition-all py-3 rounded-xl bg-violet-500 text-white text-lg font-bold"
+                  onClick={onLoginClick}
+                >
+                  Log In
+                </button>
                 <button className="active:scale-[.98] active:duration-75 hover:scale-[1.01] easy-in-out transition-all py-3 rounded-xl bg-violet-500 text-white text-lg font-bold">Register</button>
             
             </div>
