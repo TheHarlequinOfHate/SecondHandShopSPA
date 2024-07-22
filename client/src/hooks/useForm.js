@@ -12,11 +12,11 @@ export default function useForm (loginHandler,startingValues) {
 
     const onLoginClick = (e) => {
         e.preventDefault();
-
-        loginHandler(values)
         
+        loginHandler(values)
         setValues(startingValues)
     }
+
 
     return {
         values,

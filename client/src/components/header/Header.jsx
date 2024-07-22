@@ -6,15 +6,14 @@ export default function Header(){
         {name: 'Men', to:'/menclothes'},
         {name: 'Women', to:'/womenclothes'},
         {name: 'Home', to:'/'},
-        {name: 'Log In', to:'/login'}
-
-        
-    
+        {name: 'Log In', to:'/login'},
+        {name: 'Account', to:'/account'}
     ]
+
     return (
         <>
             
-            <nav className="bg-gradient-to-tr from-violet-500 to-pink-500 shadow"> 
+            <nav className="bg-gradient-to-tr from-violet-400 to-pink-400 shadow border-b-2 border-white"> 
                 <div className="h-10vh flex justify-between z-50 text-white lg:py-5 px-20 py-4 flex-1"  >
                     <div className="flex items-center felx-1">
                         <span className="text-3x1 font-bold"> Trift Shop</span>
