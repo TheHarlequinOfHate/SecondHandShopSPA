@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function useForm (loginHandler,startingValues) {
+export default function useForm (formHandler,startingValues) {
     const [values, setValues] = useState(startingValues);
 
     const onChangeHandler = (e) => {
@@ -10,10 +10,10 @@ export default function useForm (loginHandler,startingValues) {
         }));
     };
 
-    const onLoginClick = (e) => {
+    const onSubmitHandler = (e) => {
         e.preventDefault();
         
-        loginHandler(values)
+        formHandler(values)
         setValues(startingValues)
     }
 
@@ -21,6 +21,6 @@ export default function useForm (loginHandler,startingValues) {
     return {
         values,
         onChangeHandler,
-        onLoginClick,
+        onSubmitHandler,
     }
 }

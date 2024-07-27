@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import {login} from '../api/authenticate-api.js'
+import {login, register} from '../api/authenticate-api.js'
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext.jsx';
 
@@ -23,3 +23,18 @@ export const useLogin = () => {
    
     return loginHandler
 }
+
+export const useRegister = () => {
+    const {changeAuthState} = useContext(AuthContext);
+
+    const registerHandler = async (email,password) => {
+        const result = await register(email,password);
+            
+        changeAuthState(result);
+
+        return result;
+    }
+
+    return registerHandler;
+
+};

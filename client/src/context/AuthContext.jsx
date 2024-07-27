@@ -6,9 +6,8 @@ export const AuthContext = createContext({
     email: '',
     accessToken: '',
     isAuthenticate: false,
-    changeAuthState: (authState={}) => null,
+    changeAuthState: (authState = {}) => null,
 });
-
 
 export function AuthContextProvider (props) {
     const [authState, setAuthState] = useState({});

@@ -12,9 +12,9 @@ const loginFormKeys = {
 export default function LogIn(){
     const login = useLogin();
 
-    const {values, onChangeHandler , onLoginClick} = useForm(({email,password}) => login(email,password),{
+    const {values, onChangeHandler , onSubmitHandler} = useForm(({email,password}) => login(email,password),{
         [loginFormKeys.email]: '',
-        [loginFormKeys.password]: ''
+        [loginFormKeys.password]: '',
       });
     
     return(
@@ -65,7 +65,7 @@ export default function LogIn(){
           <div className="mt-8 flex flex-col gap-y-4">
                 <button
                 className="active:scale-[.98] active:duration-75 hover:scale-[1.01] easy-in-out transition-all py-3 rounded-xl bg-violet-500 text-white text-lg font-bold"
-                onClick={onLoginClick}
+                onClick={onSubmitHandler}
                 >
                   Log In
                 </button>
