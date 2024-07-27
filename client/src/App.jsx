@@ -1,5 +1,4 @@
 import {  Route, Routes } from "react-router-dom"
-import { useState } from "react"
 
 
 import Header from "./components/header/Header"
@@ -9,26 +8,24 @@ import LogIn from "./components/login/LogIn"
 import WomenCloth from "./components/women/Women"
 import UserAccount from "./components/useraccount/UserAccount"
 import Register from "./components/register/Register"
+import { AuthContextProvider } from "./context/AuthContext"
 
 
 function App() {
-  const [auth,setAith] = useState({});
-
-  const loginSubmitHandler = (values) => {
-    console.log(values)
-  }
-
+  
   return (
     <>
+      <AuthContextProvider>
         <Header/>
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/menclothes" element={<MenClothes/>}/>
-            <Route path="/login" element={<LogIn loginSubmitHandler={loginSubmitHandler} />} /> 
+            <Route path="/login" element={<LogIn  />} /> 
             <Route path="/login/register" element={<Register/>}/> 
             <Route path="/womenclothes" element={<WomenCloth/>}/>
             <Route path="/account" element={<UserAccount/>}/>
         </Routes>
+      </AuthContextProvider>
     </>
   )
 }

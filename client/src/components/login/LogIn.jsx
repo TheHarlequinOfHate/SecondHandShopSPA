@@ -1,3 +1,4 @@
+import { useLogin } from "../../hooks/useAuth";
 import useForm from "../../hooks/useForm";
 import { Link } from "react-router-dom";
 
@@ -8,10 +9,10 @@ const loginFormKeys = {
 }
 
 
-export default function LogIn({
-    loginSubmitHandler
-}){
-    const {values, onChangeHandler , onLoginClick} = useForm(loginSubmitHandler,{
+export default function LogIn(){
+    const login = useLogin();
+
+    const {values, onChangeHandler , onLoginClick} = useForm(({email,password}) => login(email,password),{
         [loginFormKeys.email]: '',
         [loginFormKeys.password]: ''
       });
