@@ -1,14 +1,27 @@
 import { Link } from "react-router-dom"
+import { AuthContext } from "../../context/AuthContext"
+import { useContext } from "react"
 
     
 export default function Header(){
-    const pages = [
-        {name: 'Men', to:'/menclothes'},
-        {name: 'Women', to:'/womenclothes'},
-        {name: 'Home', to:'/'},
-        {name: 'Log In', to:'/login'},
-        {name: 'Account', to:'/account'}
-    ]
+    const { isAuthenticated } = useContext(AuthContext)
+    let pages = {}
+    if(isAuthenticated){
+        pages = [
+            {name: 'Men', to:'/menclothes'},
+            {name: 'Women', to:'/womenclothes'},
+            {name: 'Home', to:'/'},
+            {name: 'Account', to:'/account'}
+        ]
+    } else {
+        pages = [
+            {name: 'Men', to:'/menclothes'},
+            {name: 'Women', to:'/womenclothes'},
+            {name: 'Home', to:'/'},
+            {name: 'Log In', to:'/login'},
+        ]
+    }
+    
 
     return (
         <>
