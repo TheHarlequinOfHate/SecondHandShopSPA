@@ -14,7 +14,15 @@ export default {
       '4xl': '2.441rem',
       '5xl': '3.052rem',
     },
-    extend: {},
+    extend: {
+      colors: {
+        'regal-blue': '#243c5a',
+        'cool-blue': '#61A3BA',
+        'beige-light': '#7FBCD2',
+        'coral':'#fab4b2',
+        'light-green': '#f69a99',
+      },
+    },
   },
   plugins: [],
 }
