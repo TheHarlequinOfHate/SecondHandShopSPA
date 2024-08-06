@@ -18,9 +18,10 @@ export default {
       colors: {
         'regal-blue': '#243c5a',
         'cool-blue': '#61A3BA',
-        'beige-light': '#7FBCD2',
+        'blue-light': '#7FBCD2',
         'coral':'#fab4b2',
-        'light-green': '#f69a99',
+        'light-coral': '#f69a99',
+        'mustard': '#fdb73e'
       },
     },
   },
