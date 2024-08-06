@@ -8,9 +8,10 @@ export default function Header(){
     let pages = {}
     if(isAuthenticated){
         pages = [
-            {name: 'Men', to:'/menclothes'},
-            {name: 'Women', to:'/womenclothes'},
             {name: 'Home', to:'/'},
+            {name: 'Women', to:'/womenclothes'},
+            {name: 'Men', to:'/menclothes'},
+            {name: 'Sell', to:'/sell'},
             {name: 'Account', to:'/account'}
         ]
     } else {

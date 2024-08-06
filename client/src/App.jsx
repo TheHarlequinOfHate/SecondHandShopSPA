@@ -9,6 +9,7 @@ import WomenCloth from "./components/women/Women"
 import UserAccount from "./components/useraccount/UserAccount"
 import Register from "./components/register/Register"
 import { AuthContextProvider } from "./context/AuthContext"
+import SellPage from "./components/sell/SellPage"
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/login/register" element={<Register/>}/> 
             <Route path="/womenclothes" element={<WomenCloth/>}/>
             <Route path="/account" element={<UserAccount/>}/>
+            <Route path="/sell" element={<SellPage/>}/>
         </Routes>
       </AuthContextProvider>
     </>
