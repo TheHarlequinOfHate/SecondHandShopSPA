@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Cards from "./itemCard";
 import * as  menAPI  from "../../api/menclothesAPI";
+import { Link } from "react-router-dom";
 
 export default function MenClothes(){
     let [menClothes, setMenClothes] = useState([])
@@ -19,7 +20,6 @@ export default function MenClothes(){
                     <div className="min-h-screen bg-gradient-to-tr from-violet-100 to-pink-50 p-4 ">
                         <div className="flex flex-row gap-4 flex-wrap p-20" >
                             {menClothes.map(item => <Cards key={item._id} {...item}/>)}
-                            
                         </div>
                     </div>
             </div>

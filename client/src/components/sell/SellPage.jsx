@@ -15,7 +15,7 @@ export default function SellPage() {
 
 
     return (
-        <>
+        <>  
            <div className="flex h-screen bg-cool-blue place-content-center">
                 <div className="mt-52 bg-mustard flex h-4/6 w-3/6 rounded-lg ">
                     <form action="" className="flex flex-col m-5 w-full  ">

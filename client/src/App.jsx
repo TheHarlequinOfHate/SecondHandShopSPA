@@ -10,6 +10,7 @@ import UserAccount from "./components/useraccount/UserAccount"
 import Register from "./components/register/Register"
 import { AuthContextProvider } from "./context/AuthContext"
 import SellPage from "./components/sell/SellPage"
+import DetailsPage from "./components/details/DetailPage"
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/menclothes" element={<MenClothes/>}/>
+            <Route path="/menclothes/details" element={<DetailsPage/>}/>
             <Route path="/login" element={<LogIn  />} /> 
             <Route path="/login/register" element={<Register/>}/> 
             <Route path="/womenclothes" element={<WomenCloth/>}/>

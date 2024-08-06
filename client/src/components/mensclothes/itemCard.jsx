@@ -1,3 +1,5 @@
+import { Link, useNavigate } from "react-router-dom";
+
 export default function Cards({
     username,
     name,
@@ -8,6 +10,13 @@ export default function Cards({
     description,
     _id
 }){
+  const navigate = useNavigate()
+
+  const detailsHandler = () => {
+    navigate('details')
+  }
+
+
   return (
     <div className="bg-white text-gray-700 w-30  shadow-lg rounded-md overflow-hidden">
       <img src={image} className="w-80 h-50"></img>
@@ -25,7 +34,7 @@ export default function Cards({
         </div>
       </div>
       <div className="mt-5 flex gap-2  pb-3 justify-center">
-        <button className=" bg-yellow-500/80 hover:bg-yellow-500/90 px-6 py-2 rounded-md text-white font-medium tracking-wider tansition">
+       <button onClick={detailsHandler} className=" bg-yellow-500/80 hover:bg-yellow-500/90 px-6 py-2 rounded-md text-white font-medium tracking-wider tansition">
           View
         </button>
       </div>
