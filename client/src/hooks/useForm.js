@@ -17,7 +17,6 @@ export default function useForm (formHandler,startingValues) {
         setValues(startingValues)
     }
 
-
     return {
         values,
         onChangeHandler,

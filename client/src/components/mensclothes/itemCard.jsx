@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { getItemData } from "../details/DetailPage";
 
 export default function Cards({
     username,
@@ -12,8 +13,9 @@ export default function Cards({
 }){
   const navigate = useNavigate()
 
-  const detailsHandler = () => {
-    navigate('details')
+  const detailsHandler = (e) => {
+    navigate(`:${_id}`)
+    getItemData()
   }
 
 
