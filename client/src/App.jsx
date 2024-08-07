@@ -10,7 +10,9 @@ import UserAccount from "./components/useraccount/UserAccount"
 import Register from "./components/register/Register"
 import { AuthContextProvider } from "./context/AuthContext"
 import SellPage from "./components/sell/SellPage"
-import DetailsPage from "./components/details/DetailPage"
+import DetailsPageMan from "./components/details/DetailPageMan"
+import DetailsPageWomen from "./components/details/DetailPageWomen"
+import Edit from "./components/useraccount/Edit"
 
 
 function App() {
@@ -22,11 +24,12 @@ function App() {
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/menclothes" element={<MenClothes/>}/>
-            <Route path="/menclothes/:id" element={<DetailsPage/>}/>
+            <Route path="/menclothes/:id" element={<DetailsPageMan/>}/>
             <Route path="/login" element={<LogIn  />} /> 
             <Route path="/login/register" element={<Register/>}/> 
+            <Route path="/edit" element={<Edit/>}/>
             <Route path="/womenclothes" element={<WomenCloth/>}/>
-            <Route path="/womenclothes/:id" element={<DetailsPage/>}/>
+            <Route path="/womenclothes/:id" element={<DetailsPageWomen/>}/>
             <Route path="/account" element={<UserAccount/>}/>
             <Route path="/sell" element={<SellPage/>}/>
         </Routes>

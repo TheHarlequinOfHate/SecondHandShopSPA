@@ -1,18 +1,19 @@
 import { useParams } from "react-router-dom"
-import { get } from "../../api/requests"
 import { useEffect, useState } from "react";
+import { getMenData } from "../mensclothes/itemCard";
 
-export default function DetailsPage() {
+export default function DetailsPage(e) {
     let {id} = useParams();
     let [data,setData] = useState({});
-    let normId = id.substring(1,);
+    useEffect( () => {
+        async function data () {
+            let res = await getMenData(id).then(res => setData(res));
+            return res
+        }
 
-    useEffect( () => {async function fetchData() {
-        const res = await getItemData(normId);
-        setData(res)
-    } 
-       fetchData()
-    },[])
+        data()
+    })
+
    
     return (
         <>
@@ -34,7 +35,6 @@ export default function DetailsPage() {
     )
 }
 
-export async function getItemData(id) {
-    const res = await get(`http://localhost:3030/jsonstore/menclothes/${id}`);
-    return res
-}
+
+
+

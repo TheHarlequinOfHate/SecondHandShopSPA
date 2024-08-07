@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import { post } from "../api/requests";
-import { useState } from "react";
 
-let baseUrl = 'http://localhost:3030/jsonstore/menclothes'
-
+let baseUrl = 'http://localhost:3030/jsonstore/menclothes';
+const userURL = 'http://localhost:3030/jsonstore/userItems';
 export default  function usePost (data) {
     let toArrData = Object.values(data)
 
@@ -13,7 +11,11 @@ export default  function usePost (data) {
         baseUrl = 'http://localhost:3030/jsonstore/menclothes'
     }
 
-
+    const userItem = async() => {
+        const result = await post(userURL,data)
+        return result
+    }
+    userItem()
 
     const postHandler = async () => {
         const result =  await post(baseUrl,data)

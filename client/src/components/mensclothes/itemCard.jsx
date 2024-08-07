@@ -1,22 +1,32 @@
 import { Link, useNavigate } from "react-router-dom";
-import { getItemData } from "../details/DetailPage";
-
+import { get } from "../../api/requests";
+import { AuthContext } from "../../context/AuthContext";
 export default function Cards({
     username,
     name,
     image,
     price,
-    color,
     category,
+    color,
     size,
     description,
-    _id
+    _id,
 }){
   const navigate = useNavigate()
-
+  
   const detailsHandler = (e) => {
-    navigate(`:${_id}`)
-    getItemData()
+    navigate(`${_id}`);
+
+    if(category == 'Men'){
+      getMenData(_id);
+      navigate(`/menclothes/${_id}`);
+
+    } else {
+      getWomenData(_id)
+      navigate(`/womenclothes/${_id}`);
+
+    }
+    
   }
 
 
@@ -43,4 +53,17 @@ export default function Cards({
       </div>
     </div>
   );
+}
+export async function getMenData(_id) {
+  let url = `http://localhost:3030/jsonstore/menclothes/`
+
+  const res = get(`${url}${_id}`);
+  return res
+}
+
+export async function getWomenData(_id) {
+  let url = `http://localhost:3030/jsonstore/womenclothes/`
+
+const res = get(`${url}${_id}`);
+return res
 }

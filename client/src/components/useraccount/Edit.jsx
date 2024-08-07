@@ -1,11 +1,12 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import useForm from "../../hooks/useForm";
 import usePost from "../../hooks/usePost";
-import { useActionData, useParams } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { get } from "../../api/requests";
 
 
-const sellInfoKeys = {
+const editKeys = {
     name: 'itemName',
     size: 'size',
     brand: 'brand',
@@ -21,7 +22,29 @@ const sellInfoKeys = {
 
 
 
-export default function SellPage( {username}) {
+export default function Edit () {
+    const userUrl ='http://localhost:3030/jsonstore/userItems'
+
+    async function getItemInfo () { 
+        const res = await get(userUrl)
+        
+    }
+
+    getItemInfo()
+
+    const editKeys = {
+        name: 'itemName',
+        size: 'size',
+        brand: 'brand',
+        category: 'category',
+        phoneNum: 'phoneNum',
+        price: 'price',
+        description: 'description',
+        image: 'image',
+        username: 'username',
+        userID: 'userID'
+    }
+
     let [file,setFile] = useState()
     let [category, setCategory] = useState();
 
@@ -29,31 +52,30 @@ export default function SellPage( {username}) {
     
     const valueCatHandler = (e) => {
         setCategory(e.target.value);
-        values[sellInfoKeys.category] =  category;
+        values[editKeys.category] =  category;
 
     }
 
     function addImageHandler(e){
         setFile(URL.createObjectURL(e.target.files[0]));
-        sellInfoKeys.image = file;
     }
 
     if(file == undefined){
-        setFile("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowjKGUP8tcOoGVNrVcuuCpZbN0jsyRwzclg&s");
-        sellInfoKeys.image = file;
+        setFile("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowjKGUP8tcOoGVNrVcuuCpZbN0jsyRwzclg&s")
+        editKeys.image = file
     }
     
     const {values, onChangeHandler, onSubmitHandler} = useForm(usePost,{
-        [sellInfoKeys.name]: '',
-        [sellInfoKeys.size]: '',
-        [sellInfoKeys.brand]: '',
-        [sellInfoKeys.category]: '',
-        [sellInfoKeys.phoneNum]: '',
-        [sellInfoKeys.price]: '',
-        [sellInfoKeys.description]: '',
-        [sellInfoKeys.image]: '',
-        [sellInfoKeys.username]: context.username,
-        [sellInfoKeys.userID]: context.userID,
+        [editKeys.name]: '',
+        [editKeys.size]: '',
+        [editKeys.brand]: '',
+        [editKeys.category]: '',
+        [editKeys.phoneNum]: '',
+        [editKeys.price]: '',
+        [editKeys.description]: '',
+        [editKeys.image]: '',
+        [editKeys.username]: context.username,
+        [editKeys.userID]: context.userID,
     })
 
     return (
@@ -61,68 +83,68 @@ export default function SellPage( {username}) {
            <div className="flex h-screen bg-sky-blue place-content-center">
                 <div className="mt-52 bg-dark-green flex h-4/6 w-3/6 rounded-lg ">
                     <form action="" className="flex flex-col m-5 w-full  ">
-                        <label htmlFor={sellInfoKeys.name}>Item Name</label>
+                        <label htmlFor={editKeys.name}>Item Name</label>
                         <input
                             type="text"
-                            name={sellInfoKeys.name}
+                            name={editKeys.name}
                             id="name"
                             className="border-2 hover:border-cool-blue mt-1 mb-1"
-                            value={values[sellInfoKeys.name]}
+                            value={values[editKeys.name]}
                             onChange={onChangeHandler}
                         />
-                        <label htmlFor={sellInfoKeys.size}>Size</label>
+                        <label htmlFor={editKeys.size}>Size</label>
                         <input
                             type="text"
-                            name={sellInfoKeys.size}
+                            name={editKeys.size}
                             id="name"
                             className="border-2 hover:border-cool-blue mt-1 mb-1"
-                            value={values[sellInfoKeys.size]}
+                            value={values[editKeys.size]}
                             onChange={onChangeHandler}
 
                         />
-                        <label htmlFor={sellInfoKeys.brand}>Brand</label>
+                        <label htmlFor={editKeys.brand}>Brand</label>
                         <input
                             type="text"
-                            name={sellInfoKeys.brand}
+                            name={editKeys.brand}
                             className="border-2 hover:border-cool-blue mt-1 mb-1"
-                            value={values[sellInfoKeys.brand]}
+                            value={values[editKeys.brand]}
                             onChange={onChangeHandler}
 
                         />
-                        <label htmlFor={sellInfoKeys.category}>Category</label>
+                        <label htmlFor={editKeys.category}>Category</label>
                         <select
-                            name={sellInfoKeys.category}
+                            name={editKeys.category}
                             id="category"
                             onChange={valueCatHandler}
-                            value={values[sellInfoKeys.category] = category}
+                            value={values[editKeys.category] = category}
                         >
                             <option  value="Men">Men</option>
                             <option value='Women'>Women</option>
                         </select>
-                        <label htmlFor={sellInfoKeys.phoneNum}>Phone Number</label>
+                        <label htmlFor={editKeys.phoneNum}>Phone Number</label>
                         <input
                             type="text"
-                            name={sellInfoKeys.phoneNum}
+                            name={editKeys.phoneNum}
                             className="border-2 hover:border-cool-blue mt-1 mb-1"
-                            value={values[sellInfoKeys.phoneNum]}
+                            value={values[editKeys.phoneNum]}
                             onChange={onChangeHandler}
 
                         />
-                        <label htmlFor={sellInfoKeys.price}>Price</label>
+                        <label htmlFor={editKeys.price}>Price</label>
                         <input
                             type="text"
-                            name={sellInfoKeys.price}
+                            name={editKeys.price}
                             id="price" 
-                            value={values[sellInfoKeys.price]}
+                            value={values[editKeys.price]}
                             onChange={onChangeHandler}
 
                         />
-                        <label htmlFor={sellInfoKeys.description}>Item Discription</label>
+                        <label htmlFor={editKeys.description}>Item Discription</label>
                         <textarea
-                            name={sellInfoKeys.description}
+                            name={editKeys.description}
                             id="description"
                             className="h-full border-2 hover:border-cool-blue mt-1 mb-1"
-                            value={values[sellInfoKeys.description]}
+                            value={values[editKeys.description]}
                             onChange={onChangeHandler}
 
                         >
@@ -143,7 +165,7 @@ export default function SellPage( {username}) {
                             <input
                                 className="hidden"
                                 type="file"
-                                name={sellInfoKeys.image}
+                                name={editKeys.image}
                                 id="file"
                                 onChange={addImageHandler}
                                 accept=".jpg"
@@ -155,4 +177,5 @@ export default function SellPage( {username}) {
            </div>
         </>
     )
+
 }

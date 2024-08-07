@@ -1,8 +1,29 @@
-import { useState } from "react"
+import { useState,useContext,useEffect } from "react"
+import UserItems from "./UserItems";
+import { get } from "../../api/requests";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function UserAccount() {
     let [file,setFile] = useState()
+    const [item,setItem] = useState({});
+    const context = useContext(AuthContext)
 
+
+    const userUrl ='http://localhost:3030/jsonstore/userItems';
+
+    useEffect ( () => {
+        async function getItemData () {
+            let res = await get(userUrl);
+            setItem(res)
+        }
+
+        getItemData()
+    },[]);
+
+    let result = []
+    let arr = Object.values(item)
+    let gettingUsersItems = arr.map((item) => item.userID == context.userID ? result.push(item) : null)
+    console.log(result)
     function addImageHandler(e){
         setFile(URL.createObjectURL(e.target.files[0]));
     }
@@ -24,7 +45,8 @@ export default function UserAccount() {
             </div>
             <div className="flex flex-col w-screen">
                 <h2 className=" flex font-bold h-20 items-center font-serif shadow bg-stone-100 text-mustard mb-4 justify-center text-2xl">WELCOME BACK!</h2>
-                <h1 className="flex font-bold justify-center mt-16 text-3xl font-mono text-regal-blue ">New Items For You!</h1>
+                <h1 className="flex font-bold justify-center mt-16 text-3xl font-mono text-regal-blue ">Items that you sell</h1>
+                {result.map(item => <UserItems key={item._id} {...item}/>)}                   
             </div>
         </div>
         </>
