@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import useForm from "../../hooks/useForm";
 import usePost from "../../hooks/usePost";
 import { get } from "../../api/requests";
-
+import { useParams } from "react-router-dom";
 
 const editKeys = {
     name: 'itemName',
@@ -20,29 +20,34 @@ const editKeys = {
 
 }
 
-
-
 export default function Edit () {
-    const userUrl ='http://localhost:3030/jsonstore/userItems'
+    const [items, setItems] = useState({})
+    const {id} = useParams();
+    
+    
+    const userUrl =`http://localhost:3030/jsonstore/userItems/${id}`;
 
-    async function getItemInfo () { 
-        const res = await get(userUrl)
-        
-    }
+    useEffect( () => {
+        async function getItemInfo () { 
+            const res = await get(userUrl)
+            setItems(res)
+            return res
+        }    
+        getItemInfo()
 
-    getItemInfo()
+    },[]);
 
+    
     const editKeys = {
-        name: 'itemName',
-        size: 'size',
-        brand: 'brand',
+        name: [items.itemName],
+        size: [items.size],
+        brand: [items.brand],
         category: 'category',
-        phoneNum: 'phoneNum',
-        price: 'price',
-        description: 'description',
-        image: 'image',
-        username: 'username',
-        userID: 'userID'
+        phoneNum: [items.phoneNum],
+        description: [items.description],
+        image: [items.image],
+        username: [items.username],
+        userID: [items.userID]
     }
 
     let [file,setFile] = useState()
@@ -69,7 +74,7 @@ export default function Edit () {
         [editKeys.name]: '',
         [editKeys.size]: '',
         [editKeys.brand]: '',
-        [editKeys.category]: '',
+        [editKeys.category]: 'Men',
         [editKeys.phoneNum]: '',
         [editKeys.price]: '',
         [editKeys.description]: '',

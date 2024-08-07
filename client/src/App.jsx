@@ -27,7 +27,7 @@ function App() {
             <Route path="/menclothes/:id" element={<DetailsPageMan/>}/>
             <Route path="/login" element={<LogIn  />} /> 
             <Route path="/login/register" element={<Register/>}/> 
-            <Route path="/edit" element={<Edit/>}/>
+            <Route path="/edit/:id" element={<Edit/>}/>
             <Route path="/womenclothes" element={<WomenCloth/>}/>
             <Route path="/womenclothes/:id" element={<DetailsPageWomen/>}/>
             <Route path="/account" element={<UserAccount/>}/>
