@@ -16,7 +16,7 @@ export default function Cards({
 
   const detailsHandler = (e) => {
     navigate(`:${_id}`)
-    getItemData(category)
+    getItemData()
   }
 
 

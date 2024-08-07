@@ -15,9 +15,9 @@ export default function WomenCloth(){
 
     return(
         <>
-            <div className="justify-center bg-gradient-to-tr from-violet-200 to-pink-100 ">
-                <h4 className="font-bold text-[30px] pb-2 pt-5 border-b border-violet-200 text-center bg-gradient-to-tr from-violet-200 to-pink-100 ">Women Clothes</h4>
-                    <div className="min-h-screen bg-gradient-to-tr from-violet-100 to-pink-50 p-4 ">
+            <div className="justify-center ">
+                <h4 className="font-bold text-[30px] pb-2 pt-5 border-b border-white text-center bg-smooth-grey text-dark-green">WOMEN CLOTHES</h4>
+                    <div className="min-h-screen bg-light-green p-4 ">
                         <div className="flex flex-row gap-4 flex-wrap p-20" >
                             {womenClothes.map(item => <Cards key={item._id} {...item}/>)}
                         </div>

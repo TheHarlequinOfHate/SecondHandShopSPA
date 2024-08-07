@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useForm from "../../hooks/useForm";
 import usePost from "../../hooks/usePost";
+import { useActionData, useParams } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 
 const sellInfoKeys = {
@@ -11,19 +13,23 @@ const sellInfoKeys = {
     phoneNum: 'phoneNum',
     price: 'price',
     description: 'description',
-    image: 'image' 
+    image: 'image',
+    username: 'username',
+     
 }
 
 
 
-export default function SellPage() {
+export default function SellPage( {username}) {
     let [file,setFile] = useState()
     let [category, setCategory] = useState();
 
+    const context = useContext(AuthContext)
+    
     const valueCatHandler = (e) => {
-        console.log(e.target.value)
         setCategory(e.target.value);
         values[sellInfoKeys.category] =  category;
+        values[sellInfoKeys.username] = username;
 
     }
 
@@ -45,6 +51,7 @@ export default function SellPage() {
         [sellInfoKeys.price]: '',
         [sellInfoKeys.description]: '',
         [sellInfoKeys.image]: '',
+        [sellInfoKeys.username]: context.username,
     })
 
     return (

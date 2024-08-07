@@ -21,7 +21,11 @@ export default {
         'blue-light': '#7FBCD2',
         'coral':'#fab4b2',
         'light-coral': '#f69a99',
-        'mustard': '#fdb73e'
+        'mustard': '#fdb73e',
+        'light-green': '#dfe2cf',
+        'smooth-grey': '#eee2df',
+        'dark-green': '#84a59d',
+        'sky-blue': '#bde0fe'
       },
     },
   },
