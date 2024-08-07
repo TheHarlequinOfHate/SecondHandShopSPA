@@ -7,6 +7,7 @@ export default function Cards({
     image,
     price,
     color,
+    category,
     size,
     description,
     _id
@@ -15,7 +16,7 @@ export default function Cards({
 
   const detailsHandler = (e) => {
     navigate(`:${_id}`)
-    getItemData()
+    getItemData(category)
   }
 
 

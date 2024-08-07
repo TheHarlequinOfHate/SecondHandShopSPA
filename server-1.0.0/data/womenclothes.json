@@ -1,6 +1,6 @@
 {
-    "518f157f-a2f0-45b7-877c-50b185a715de": {
-        "username": "Jango",
+    "51asdasd57f-asda-45ab7-asdasd-50b185a7xade": {
+        "username": "Anna",
         "name": "Jacket",
         "image": "https://static8.depositphotos.com/1559986/1051/i/380/depositphotos_10513998-stock-photo-red-jacket.jpg",
         "price": "10",
@@ -11,16 +11,16 @@
         "description": "It is a leather jacker",
         "_id": "518f157f-a2f0-45b7-877c-50b185a715de"
     },
-    "edbd59c8-e0cd-4f04-8222-e936047c0210": {
-        "username": "Mango",
+    "51asdasdf-aasd0-4asd7-877c-50b185adasds": {
+        "username": "Vanesa",
         "name": "Jacket",
         "image": "https://static8.depositphotos.com/1559986/1051/i/380/depositphotos_10513998-stock-photo-red-jacket.jpg",
-        "price": "15",
-        "color": "blue",
-        "size": "L",
+        "price": "10",
+        "color": "red",
+        "size": "M",
+        "phoneNum": "089 578 4567",
+        "brand": "Tom Tailor",
         "description": "It is a leather jacker",
-        "_id": "edbd59c8-e0cd-4f04-8222-e936047c0210"
+        "_id": "51asdasdf-aasd0-4asd7-877c-50b185adasds"
     }
-
-    
 }
