@@ -19,8 +19,7 @@ export default function Register() {
     const register = useRegister();
     const navigate = useNavigate();
 
-    const registerHandler = async ({email, password}) => {
-        
+    const registerHandler = async ({email, password , username, country}) => {
         try {
             await register(email,password);
             navigate('/account');

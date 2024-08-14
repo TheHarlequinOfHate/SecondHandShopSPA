@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import useForm from "../../hooks/useForm";
 import usePost from "../../hooks/usePost";
 import { useActionData, useParams } from "react-router-dom";
+import LogIn from "../login/LogIn";
 import { AuthContext } from "../../context/AuthContext";
 
 
@@ -21,7 +22,7 @@ const sellInfoKeys = {
 
 
 
-export default function SellPage( {username}) {
+export default function SellPage( ) {
     let [file,setFile] = useState()
     let [category, setCategory] = useState();
 
@@ -56,9 +57,10 @@ export default function SellPage( {username}) {
         [sellInfoKeys.userID]: context.userID,
     })
 
+
     return (
         <>  
-           <div className="flex h-screen bg-sky-blue place-content-center">
+           {context.isAuthenticated ? (<div className="flex h-screen bg-sky-blue place-content-center">
                 <div className="mt-52 bg-dark-green flex h-4/6 w-3/6 rounded-lg ">
                     <form action="" className="flex flex-col m-5 w-full  ">
                         <label htmlFor={sellInfoKeys.name}>Item Name</label>
@@ -152,7 +154,7 @@ export default function SellPage( {username}) {
                     </div>
                 </div>
 
-           </div>
+           </div>) : <LogIn/>}
         </>
     )
 }
