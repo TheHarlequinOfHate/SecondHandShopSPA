@@ -61,7 +61,6 @@ export default function Register() {
 
       },[values]);
 
-      console.log(valid)
 
     return (
     <>
