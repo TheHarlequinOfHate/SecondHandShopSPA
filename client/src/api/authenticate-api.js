@@ -8,9 +8,9 @@ export const login = async (email, password) => {
     return authData;
 }
 
-export const register = async (email,password) => {
+export const register = async (email,password,username) => {
 
-    const registerData = requester.post(`${baseURL}/register`, {email,password});
+    const registerData = requester.post(`${baseURL}/register`, {email,password,username});
 
     return registerData
 }

@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import { useRegister } from "../../hooks/useAuth";
 import useForm from "../../hooks/useForm";
+import registerValidation from "../../utils/registerValidation";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { register } from "../../api/authenticate-api";
 
 
 
@@ -16,17 +20,34 @@ const registerFormKeys = {
 
 
 export default function Register() {
-    const register = useRegister();
+  const {changeAuthState} = useContext(AuthContext);
     const navigate = useNavigate();
+    const [valid,setValid] = useState({
+      isEmailValid: true,
+      isPasswordValid: true,
+      isUsernameValid: true,
+      isCountryValid: true,
+      isAllValid: true,
+    })
 
+  
     const registerHandler = async ({email, password , username, country}) => {
+      if(!valid.isAllValid){
+        return;
+      }
+
+
         try {
-            await register(email,password);
-            navigate('/account');
+          const result = await register(email,password, username);
+          changeAuthState(result);
+          navigate('/account');
+          
         } catch (err) {
             console.log(err.message);
         }
-    }
+    
+      }
+
 
     const {values, onChangeHandler, onSubmitHandler} = useForm(registerHandler, {
         [registerFormKeys.email]: '',
@@ -35,6 +56,12 @@ export default function Register() {
         [registerFormKeys.country]: '',
       });
 
+      useEffect(() => {
+        setValid(registerValidation(values));
+
+      },[values]);
+
+      console.log(valid)
 
     return (
     <>
