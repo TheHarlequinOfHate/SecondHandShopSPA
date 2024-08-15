@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
 
-import { useRegister } from "../../hooks/useAuth";
 import useForm from "../../hooks/useForm";
 import registerValidation from "../../utils/registerValidation";
 import { useContext, useEffect, useState } from "react";

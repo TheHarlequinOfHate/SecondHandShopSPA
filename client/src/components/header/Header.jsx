@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
 import { useContext } from "react"
+import logOut from "../../utils/update"
 
     
 export default function Header(){
@@ -12,7 +13,7 @@ export default function Header(){
             {name: 'Women', to:'/womenclothes'},
             {name: 'Men', to:'/menclothes'},
             {name: 'Sell', to:'/sell'},
-            {name: 'Account', to:'/account'}
+            {name: 'Account', to:'/account'},
         ]
     } else {
         pages = [

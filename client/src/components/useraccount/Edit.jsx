@@ -5,26 +5,12 @@ import useForm from "../../hooks/useForm";
 import usePost from "../../hooks/usePost";
 import { get } from "../../api/requests";
 import { useParams } from "react-router-dom";
-
-const editKeys = {
-    name: 'itemName',
-    size: 'size',
-    brand: 'brand',
-    category: 'category',
-    phoneNum: 'phoneNum',
-    price: 'price',
-    description: 'description',
-    image: 'image',
-    username: 'username',
-    userID: 'userID'
-
-}
+import update from "../../utils/update";
 
 export default function Edit () {
     const [items, setItems] = useState({})
     const {id} = useParams();
-    
-    
+    const context = useContext(AuthContext)
     const userUrl =`http://localhost:3030/jsonstore/userItems/${id}`;
 
     useEffect( () => {
@@ -37,23 +23,29 @@ export default function Edit () {
 
     },[]);
 
-    
-    const editKeys = {
-        name: [items.itemName],
-        size: [items.size],
-        brand: [items.brand],
-        category: 'category',
-        phoneNum: [items.phoneNum],
-        description: [items.description],
-        image: [items.image],
-        username: [items.username],
-        userID: [items.userID]
+    if(items.category == undefined ){
+        items.category = 'Men';
     }
 
+    const editKeys = {
+        itemName: 'itemName',
+        size: 'size',
+        brand: 'brand',
+        image: 'image',
+        category: 'category',
+        phoneNum: 'phoneNum',
+        price: 'price', 
+        description: 'description',
+        userID: 'userID',
+        username: 'username',
+        URL : 'URL',
+        _id: 'id',
+        access: 'access'
+    }
+    
     let [file,setFile] = useState()
     let [category, setCategory] = useState();
 
-    const context = useContext(AuthContext)
     
     const valueCatHandler = (e) => {
         setCategory(e.target.value);
@@ -67,11 +59,11 @@ export default function Edit () {
 
     if(file == undefined){
         setFile("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSowjKGUP8tcOoGVNrVcuuCpZbN0jsyRwzclg&s")
-        editKeys.image = file
+        items.image = file
     }
     
-    const {values, onChangeHandler, onSubmitHandler} = useForm(usePost,{
-        [editKeys.name]: '',
+    const {values, onChangeHandler, onSubmitHandler} = useForm(update,{
+        [editKeys.itemName]: items.itemName,
         [editKeys.size]: '',
         [editKeys.brand]: '',
         [editKeys.category]: 'Men',
@@ -81,20 +73,24 @@ export default function Edit () {
         [editKeys.image]: '',
         [editKeys.username]: context.username,
         [editKeys.userID]: context.userID,
+        [editKeys.URL]: userUrl,
+        [editKeys._id]: id,
+        [editKeys.access]: context.accessToken,
     })
+
 
     return (
         <>  
            <div className="flex h-screen bg-sky-blue place-content-center">
                 <div className="mt-52 bg-dark-green flex h-4/6 w-3/6 rounded-lg ">
-                    <form action="" className="flex flex-col m-5 w-full  ">
-                        <label htmlFor={editKeys.name}>Item Name</label>
+                    <form onSubmit={onSubmitHandler} className="flex flex-col m-5 w-full  ">
+                        <label htmlFor={editKeys.itemName}>Item Name</label>
                         <input
                             type="text"
-                            name={editKeys.name}
+                            name={editKeys.itemName}
                             id="name"
                             className="border-2 hover:border-cool-blue mt-1 mb-1"
-                            value={values[editKeys.name]}
+                            value={values[editKeys.itemName]}
                             onChange={onChangeHandler}
                         />
                         <label htmlFor={editKeys.size}>Size</label>
@@ -121,7 +117,7 @@ export default function Edit () {
                             name={editKeys.category}
                             id="category"
                             onChange={valueCatHandler}
-                            value={values[editKeys.category] = category}
+                            value={values[editKeys.category] }
                         >
                             <option  value="Men">Men</option>
                             <option value='Women'>Women</option>
@@ -157,7 +153,6 @@ export default function Edit () {
                         <div className="flex justify-center">
                             <button
                                 className="mt-8 border-2 border-regal-blue w-3/6 h-8 rounded-lg justify-center text-regal-blue active:scale-[.98] active:duration-75 hover:scale-[1.01]"
-                                onClick={onSubmitHandler}
                             >
                             Submit
                             </button>

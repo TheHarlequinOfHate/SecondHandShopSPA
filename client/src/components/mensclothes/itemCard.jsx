@@ -13,16 +13,14 @@ export default function Cards({
     _id,
 }){
   const navigate = useNavigate()
-  
-  const detailsHandler = (e) => {
+  const detailsHandler = async (e) => {
     navigate(`${_id}`);
-
     if(category == 'Men'){
       getMenData(_id);
       navigate(`/menclothes/${_id}`);
 
     } else {
-      getWomenData(_id)
+      await getWomenData(_id);
       navigate(`/womenclothes/${_id}`);
 
     }
@@ -57,13 +55,13 @@ export default function Cards({
 export async function getMenData(_id) {
   let url = `http://localhost:3030/jsonstore/menclothes/`
 
-  const res = get(`${url}${_id}`);
+  const res = await get(`${url}${_id}`);
   return res
 }
 
 export async function getWomenData(_id) {
   let url = `http://localhost:3030/jsonstore/womenclothes/`
 
-const res = get(`${url}${_id}`);
-return res
+  const res = await get(`${url}${_id}`);
+  return res
 }

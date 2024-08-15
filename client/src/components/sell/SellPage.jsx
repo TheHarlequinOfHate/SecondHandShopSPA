@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useForm from "../../hooks/useForm";
 import usePost from "../../hooks/usePost";
-import { useActionData, useParams } from "react-router-dom";
+import { Link, useActionData, useNavigate, useParams } from "react-router-dom";
 import LogIn from "../login/LogIn";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -16,8 +16,8 @@ const sellInfoKeys = {
     description: 'description',
     image: 'image',
     username: 'username',
-    userID: 'userID'
-
+    userID: 'userID',
+    isValid: true,
 }
 
 
@@ -25,7 +25,6 @@ const sellInfoKeys = {
 export default function SellPage( ) {
     let [file,setFile] = useState()
     let [category, setCategory] = useState();
-
     const context = useContext(AuthContext)
     
     const valueCatHandler = (e) => {
@@ -36,7 +35,7 @@ export default function SellPage( ) {
 
     function addImageHandler(e){
         setFile(URL.createObjectURL(e.target.files[0]));
-        sellInfoKeys.image = file;
+        values[sellInfoKeys.image] = file;
     }
 
     if(file == undefined){
@@ -48,21 +47,26 @@ export default function SellPage( ) {
         [sellInfoKeys.name]: '',
         [sellInfoKeys.size]: '',
         [sellInfoKeys.brand]: '',
-        [sellInfoKeys.category]: '',
+        [sellInfoKeys.category]: 'Men',
         [sellInfoKeys.phoneNum]: '',
         [sellInfoKeys.price]: '',
         [sellInfoKeys.description]: '',
         [sellInfoKeys.image]: '',
         [sellInfoKeys.username]: context.username,
         [sellInfoKeys.userID]: context.userID,
+        [sellInfoKeys.isValid]: true,
     })
+
+    
+
+
 
 
     return (
         <>  
            {context.isAuthenticated ? (<div className="flex h-screen bg-sky-blue place-content-center">
                 <div className="mt-52 bg-dark-green flex h-4/6 w-3/6 rounded-lg ">
-                    <form action="" className="flex flex-col m-5 w-full  ">
+                    <form onSubmit={onSubmitHandler} className="flex flex-col m-5 w-full  ">
                         <label htmlFor={sellInfoKeys.name}>Item Name</label>
                         <input
                             type="text"
@@ -131,8 +135,7 @@ export default function SellPage( ) {
                         </textarea>
                         <div className="flex justify-center">
                             <button
-                                className="mt-8 border-2 border-regal-blue w-3/6 h-8 rounded-lg justify-center text-regal-blue active:scale-[.98] active:duration-75 hover:scale-[1.01]"
-                                onClick={onSubmitHandler}
+                            className="mt-8 border-2 border-regal-blue w-3/6 h-8 rounded-lg justify-center text-regal-blue active:scale-[.98] active:duration-75 hover:scale-[1.01]"
                             >
                             Submit
                             </button>

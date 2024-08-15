@@ -1,7 +1,7 @@
 {
     "518f157f-a2f0-45b7-877c-50b185a715de": {
         "username": "Jango",
-        "name": "Jacket",
+        "itemName": "Jacket",
         "image": "https://static8.depositphotos.com/1559986/1051/i/380/depositphotos_10513998-stock-photo-red-jacket.jpg",
         "price": "10",
         "color": "red",
@@ -14,7 +14,7 @@
     },
     "edbd59c8-e0cd-4f04-8222-e936047c0210": {
         "username": "Mango",
-        "name": "Jacket",
+        "itemName": "Jacket",
         "image": "https://static8.depositphotos.com/1559986/1051/i/380/depositphotos_10513998-stock-photo-red-jacket.jpg",
         "price": "15",
         "category": "Men",
